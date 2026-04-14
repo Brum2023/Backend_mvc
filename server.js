@@ -4,8 +4,8 @@ const app = express()
 
 function callbackDaRaiz(request,response) {
 
-   response.send("Hello World")        
-        
+   response.send("Linguiça")        
+            
    
 
 
@@ -14,7 +14,7 @@ function callbackDaRaiz(request,response) {
 app.get("/",callbackDaRaiz)
  
 app.listen(2000, () => {
-    console.log("API rodando!")
+    console.log("API rodando http://localhost:2000")
 
 })
 
