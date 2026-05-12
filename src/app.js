@@ -5,9 +5,11 @@ const express = require("express")
   
 const app = express()
 
-function callbackDaRaiz(request,response) {
+app.use(express.json())
 
-   response.send("Linguiça")        
+function callbackDaRaiz(req,res) {
+
+   res.send("Linguiça")        
             
    
 
@@ -21,5 +23,6 @@ function callbackDaRaiz(request,response) {
              app.get("/",callbackDaRaiz)
  
 app.get("/users",userController.getAllUsers)
-
+app.post("/users",userController.createUser)
 module.exports = app
+
