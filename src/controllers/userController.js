@@ -30,10 +30,28 @@ const createdUser = userModel.create(newUser)
 return res.status(201).json(createdUser)
 
 }
+const getUserById = (req, res ) =>{
+   const id = req.params.id
+   
+   const user = userModel.findById(id)
+   if(!user){
+    return res.status(404).json({
+   message: "Erro não se encontra pessoa"
+    })
+return res.json(user)
+}
+//console.log(userModel.findById())
+
 
 
 
 module.exports={
     createUser,
-    getAllUsers
-}
+    getAllUsers,
+    getUserById
+
+
+
+
+
+  }
