@@ -31,18 +31,19 @@ return res.status(201).json(createdUser)
 
 }
 const getUserById = (req, res ) =>{
-   const id = req.params.id
+   const id = Number(req.params.id)
    
    const user = userModel.findById(id)
    if(!user){
     return res.status(404).json({
-   message: "Erro não se encontra pessoa"
+      message : "Erro de usuário"
     })
-return res.json(user)
-}
+   } 
+    return res.json(user)
+
 //console.log(userModel.findById())
 
-
+  }
 
 
 module.exports={
@@ -54,4 +55,4 @@ module.exports={
 
 
 
-  }
+}
