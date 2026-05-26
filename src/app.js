@@ -25,5 +25,7 @@ function callbackDaRaiz(req,res) {
 app.get("/users",userController.getAllUsers)
 app.get("/users/:id",userController.getUserById)
 app.post("/users",userController.createUser)
+app.put("/users/:id",userController.updateuser)
+app.delete("/users/:id",userController.deleteuser)
 module.exports = app
 
