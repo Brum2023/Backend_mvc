@@ -1,9 +1,19 @@
 
 const express = require("express")
+const userRoutes = require("./routes/userRoutes")
 
- const userController = require("./controllers/userController") 
   
 const app = express()
+
+app.get("/",(req,res)=>{
+   res.send("Estamos funcionando")
+})
+
+app.use(express.json())
+
+
+
+
 
 app.use(express.json())
 
@@ -22,11 +32,6 @@ function callbackDaRaiz(req,res) {
 
              app.get("/",callbackDaRaiz)
  
-app.get("/users",userController.getAllUsers)
-app.get("/users/:id",userController.getUserById)
-app.post("/users",userController.createUser)
-app.put("/users/:id",userController.updateuser)
-app.delete("/users/:id",userController.deleteuser)
+             app.use("/users",userRoutes)
 
-module.exports = app
-
+             module.exports = app 
