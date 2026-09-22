@@ -1,7 +1,7 @@
 const app = require("./app")
-app.listen(2000, () => {
-    console.log("API rodando http://localhost:2000")
 
+const PORTA = 3000
+
+app.listen(PORTA, () => {
+    console.log(`Servidor rodando em http://localhost:${PORTA}`)
 })
-
-
