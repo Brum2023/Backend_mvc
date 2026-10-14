@@ -1,6 +1,6 @@
-const FilmeModel = require("../models/FolmeModel")
+const FilmeModel = require("../models/FilmeModel")
 
-const FilmeComtroller={
+const FilmeController={
     async getAllFilmes(req,res){
         const filmes = await FilmeModel.getAllFilmes()
 
@@ -17,6 +17,7 @@ async createFilme(req,res) {
     titulo,
     diretorId
 }
+
 
 
 const filmeId = await FilmeModel.create(filme,generos)

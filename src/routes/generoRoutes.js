@@ -6,4 +6,7 @@ const GeneroController = require("../controllers/generoController")
 router.get("/",GeneroController.getAllGeneros)
 router.post("/",GeneroController.createGenero)
 
+
+
+
 module.exports = router
