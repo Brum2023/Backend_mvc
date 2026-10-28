@@ -7,7 +7,7 @@ const FilmeController={
         return res.json(filmes)
     },
     async getFilmeById(req,res){
-        const{id} = req.body
+        const{id} = req.params
 
 
         const filme = await FilmeModel.findById(id)
