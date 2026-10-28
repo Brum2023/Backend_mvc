@@ -2,7 +2,10 @@ const connection = require("../database/connection")
 
 const FilmeModel = {
     async findAll() {
-        return await connection.raw("SELECT * FROM filmes")
+       // return await connection.raw("SELECT * FROM filmes")
+      return await connection("filmes")   
+   
+   
     },
 
     async create(filme, generos) {
@@ -38,12 +41,11 @@ const FilmeModel = {
     },
 
     async findById( id ) {
-        const filmeResult = await connection.raw(
-            "SELECT * FROM filmes WHERE id = ?",
-            [ id ]
-        )
+       const filmeResult = await connection("filmes")
+                         .where({id})
+                         .first()
 
-        const filme = filmeResult[0]
+        
 
         if( !filme ) return null
 
