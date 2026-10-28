@@ -49,14 +49,11 @@ const FilmeModel = {
 
         if( !filme ) return null
 
-        const generos = await connection.raw(`
-            SELECT g.id, g.nome FROM generos g
-            JOIN filmes_generos fg ON g.id = fg.genero_id
-            WHERE fg.filme_id = ?    
-            `,
-            [ id ]
-        )
-
+        const generos = await connection("generos")
+                      .join("filmes_generos","generos.id","filmes_generos.genero_id")
+                      .where("filme_generos.filme_id",id)
+                      .select("generos.id","generos.nome")
+                       
         return {
             ...filme,
             generos

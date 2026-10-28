@@ -6,7 +6,15 @@ const FilmeController={
 
         return res.json(filmes)
     },
-async createFilme(req,res) {
+    async getFilmeById(req,res){
+        const{id} = req.body
+
+
+        const filme = await FilmeModel.findById(id)
+
+        return res.json(filme)
+    },
+    async createFilme(req,res) {
     const{
         titulo,
         diretorId,
