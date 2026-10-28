@@ -41,7 +41,7 @@ const FilmeModel = {
     },
 
     async findById( id ) {
-       const filmeResult = await connection("filmes")
+       const filme = await connection("filmes")
                          .where({id})
                          .first()
 
@@ -51,7 +51,7 @@ const FilmeModel = {
 
         const generos = await connection("generos")
                       .join("filmes_generos","generos.id","filmes_generos.genero_id")
-                      .where("filme_generos.filme_id",id)
+                      .where("filmes_generos.filme_id",id)
                       .select("generos.id","generos.nome")
                        
         return {
