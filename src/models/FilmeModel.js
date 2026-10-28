@@ -8,20 +8,29 @@ const FilmeModel = {
     async create(filme, generos) {
         const { titulo, diretorId } = filme
 
-        const insereFilme = await connection.raw(
-            "INSERT INTO filmes (titulo, diretor_id) VALUES (?, ?)",
-            [titulo, diretorId]
-        )
+        const insereFilme = await connection("Filmes").insert({
+            titulo,
+            diretor_Id: diretorId
+        })
 
-        const filmeId = insereFilme.lastID
+        
+        const [filmeId] = insereFilme
+
+        console.log(insereFilme)
 
         // inserir um relacionamento para o novo filme para cada genero
         if(generos && generos.length > 0) {
             for( const generoId of generos ) {
-                await connection.raw(
-                    "INSERT INTO filmes_generos (filme_id, genero_id) VALUES (?, ?)",
-                    [filmeId, generoId]
-                )
+              //  await connection("filmes_generos").inser(
+                //    "INSERT INTO filmes_generos (filme_id, genero_id) VALUES (?, ?)",
+                  //  [filmeId, generoId]
+                ///)
+                               
+                await connection("filmes_generos").insert({
+                filme_id:filmeId,
+                genero_id:generoId
+              })
+            
             }
         }
 

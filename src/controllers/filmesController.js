@@ -2,7 +2,7 @@ const FilmeModel = require("../models/FilmeModel")
 
 const FilmeController={
     async getAllFilmes(req,res){
-        const filmes = await FilmeModel.getAllFilmes()
+        const filmes = await FilmeModel.findAll()
 
         return res.json(filmes)
     },
