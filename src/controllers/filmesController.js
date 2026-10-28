@@ -13,7 +13,24 @@ const FilmeController={
         const filme = await FilmeModel.findById(id)
 
         return res.json(filme)
+
+   
+   
+   
     },
+   async getFilmeByFiltro(req,res){
+         const{titulo,genero,diretor} = req.query
+         
+         const filmes = await FilmeModel.search({
+            titulo,
+            genero,
+            diretor
+         })
+          return res.json(filmes)   
+        },
+
+
+
     async createFilme(req,res) {
     const{
         titulo,

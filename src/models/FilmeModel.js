@@ -1,4 +1,5 @@
 const connection = require("../database/connection")
+const { search } = require("../routes/filmeRoutes")
 
 const FilmeModel = {
     async findAll() {
@@ -58,6 +59,18 @@ const FilmeModel = {
             ...filme,
             generos
         }
+    },
+    async search(filtros){
+        const {titulo,diretor,genero } = filtros
+        let query = connection("filmes")
+         .leftJoin("filmes_generos","filmes.id","filmes_generos.filme_id")
+         .leftJoin("generos","generos.id","filmes_generos.generos_id")
+        .select(
+            "filmes.id",
+            "filmes.titulo",
+            "filmes.diretor_id"
+        )
+       .distinct()
     }
 }
 
